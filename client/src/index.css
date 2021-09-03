@@ -11,3 +11,48 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.loader{
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url('//upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Phi_fenomeni.gif/50px-Phi_fenomeni.gif') 
+              50% 50% no-repeat rgb(249,249,249);
+}
+
+.navbar{
+  z-index: 555;
+  box-shadow: 10px 5px 5px lightblue;
+}
+
+.nav-link{
+  color: white !important;
+  padding: 10px 5px;
+}
+.nav-link:hover{
+  transform: scale(1.1);
+  border-bottom: 1px solid white;
+}
+.navbar-brand{
+  color: white !important;
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+.logout{
+  padding: 5px 3px;
+  float: right;
+  align-self: flex-end;
+}
+
+.logout:hover{
+  transform: scale(1.1);
+  border-bottom: 1px solid white;
+  text-decoration: none;
+  box-shadow: none;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import Logout from './auth/logout';
+import '../index.css'
 const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-primary" style={{paddingBottom:"20px"}}> 
@@ -22,7 +23,7 @@ const Navbar = () => {
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/request">Requets</NavLink>
                     </li>
-                    <li className="nav-item">
+                    <li className="nav-item logout">
                         <Logout/>
                     </li>
 

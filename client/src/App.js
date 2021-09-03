@@ -39,7 +39,7 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <Route path="/" exact component={Landing}/>
+        <Route path="/" exact component={Login}/>
         <Route path="/login" component={Login}/>
         <Route path="/register" component={Register}/>
         <Route path="/profile" component={Showprofile}/>

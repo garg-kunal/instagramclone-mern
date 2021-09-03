@@ -2,7 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import { connect } from 'react-redux';
 import Guest from './images/edit.png'
-import { Redirect, withRouter } from 'react-router-dom';
+import { Redirect, withRouter,NavLink } from 'react-router-dom';
 class Register extends React.Component {
     constructor() {
         super();
@@ -46,7 +46,7 @@ class Register extends React.Component {
         if (this.state.username.length === 0 || this.state.pwd.length === 0 || this.state.name.length === 0) {
             alert("Please Fill these Fields....")
         }
-        else if(this.state.pwd.length <6)alert("Password To Short");
+        else if (this.state.pwd.length < 6) alert("Password To Short");
         else {
             const exercise = {
                 email: this.state.username,
@@ -115,6 +115,9 @@ class Register extends React.Component {
                             </form>
                             <div className="row mx-auto">
                                 <b style={{ color: "red" }} className="mx-auto">{this.state.message}</b>
+                            </div>
+                            <div className="row mx-auto">
+                                <NavLink to="/login" style={{ color: "grey", paddingTop: "40px" }} className="mx-auto">Already have an Account ? <b>Login</b></NavLink>
                             </div>
                         </div>
 

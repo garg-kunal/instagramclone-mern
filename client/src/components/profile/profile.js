@@ -30,10 +30,12 @@ class Bio extends React.Component {
     }
     post = (e) => {
         e.preventDefault();
-        if (this.state.status.length === 0 || this.state.preview.length === 0) {
+        if (this.state.status.length === 0 || this.state.preview.length===0) {
             alert("files required");
         } else {
             const formData = new FormData();
+
+
             formData.append('photo', this.state.raw);
             formData.append('body', this.state.status);
             formData.append('mainId', this.props.authStatus.user.id);
@@ -44,6 +46,7 @@ class Bio extends React.Component {
                 }
             }).then((res) => {
                 alert(res.data.message);
+                window.location.reload();
                 this.setState({
                     show: true,
                     raw: "",
@@ -63,9 +66,11 @@ class Bio extends React.Component {
     render() {
         return (
             <div className="container">
-                {this.state.show ? <div><span  style={{ float: "right", margin: "5px" }} >Update Profile</span><Fab color="primary" onClick={() => { this.show() }} aria-label="add" style={{ float: "right", margin: "20px" }}>
-                    <AddIcon />
-                </Fab> </div>: <div>
+                {this.state.show ? <div className="fixed-bottom">
+                    <span align="right" style={{ float: "right", margin: "20px" }} >Update Profile</span>
+                    <Fab color="primary" onClick={() => { this.show() }} aria-label="add" style={{ float: "right", margin: "20px" }}>
+                        <AddIcon />
+                    </Fab> </div> : <div>
                     <img src={this.state.preview} className="img  rounded-circle" height="200" width="200" alt="Selected" />
                     <form className="form-group">
                         <input type="text" required placeholder="Bio Status"
@@ -80,7 +85,7 @@ class Bio extends React.Component {
                         <button type="submit" onClick={(e) => { this.post(e) }} className="btn btn-primary">Add</button>
                     </form>
                 </div>
-    }
+                }
 
             </div>
         )

@@ -29,11 +29,11 @@ export default class Comment extends React.Component {
     }
     render() {
         return (
-            <div style={{ overflow: "auto", height: "100px",padding:"50px" }}>
+            <div className="container" style={{ overflow: "auto", height: "100px",padding:"50px" }}>
                 Comments Are Under
                 {
-                    this.state.link.map((item) =>
-                        <div className="card border-0 d-flex flex-column" style={{ margin: "20px", borderRadius: "25px" }}>
+                    this.state.link.map((item,index) =>
+                        <div key={index} className="card border-0 d-flex flex-column" style={{ margin: "20px", borderRadius: "25px" }}>
                             <div className="card-footer border-0" style={{ backgroundColor: "lightgrey", borderRadius: "25px" }}>
                                 <span>Comment By: {item.postedBy}</span> 
                                &nbsp;&nbsp;<b> {item.body}</b>

@@ -46,7 +46,7 @@ class Showprofile extends React.Component {
             <div className="container-fluid">
                 <Navbar />
 
-                <div className="container" style={{ marginBottom: "10px", marginTop: "80px" }}>
+                <div className="container" style={{ marginBottom: "10px", marginTop: "100px" }}>
                     <div className="card">
                         <div className="card-header">
                             <b> {this.props.authStatus.user.name}</b>

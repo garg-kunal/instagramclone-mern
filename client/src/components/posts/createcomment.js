@@ -58,9 +58,11 @@ class Comment extends React.Component {
         return (
             <div className="container-fluid">
                 {this.state.show ?
-                        <Fab color="Secondary" onClick={() => { this.show() }} aria-label="edit">
+                <div style={{padding:" 10px 0px"}}>
+                    <br/>
+                        <Fab color="Secondary" size="small" onClick={() => { this.show() }} aria-label="edit">
                             <EditIcon />
-                        </Fab> : <div className="text-center">
+                        </Fab></div> : <div className="text-center">
                         <form className="form-group">
                             <input type="text" required placeholder="Comment"
                                 onChange={(e) => { this.statushandler(e) }}

@@ -5,7 +5,7 @@ import Fab from '@material-ui/core/Fab';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 class Like extends React.Component {
     constructor(props) {
-        super(props);
+        super();
         this.state = {
             show: false,
             count: 0
@@ -27,11 +27,13 @@ class Like extends React.Component {
         })
     }
     componentDidMount(props) {
+        console.log(this.props.id);
         const data = {
             me: this.props.authStatus.user.id,
             postId: this.props.id
         }
         axios.post("http://localhost:5000/user/getlike", data).then((res) => {
+            console.log(res.data);
             this.setState({
                 show: true,
                 count: res.data.message
@@ -40,7 +42,8 @@ class Like extends React.Component {
             console.log(err)
         })
     }
-    likepost() {
+    likepost(props) {
+        console.log(this.props);
         const data = {
             me: this.props.authStatus.user.id,
             postId: this.props.id
@@ -64,10 +67,10 @@ class Like extends React.Component {
         return (
             <div className="container">
                 {this.state.show ?
-                    <div><b>{this.state.count}</b><br/> <Fab aria-label="like" style={{ color: "red" }} onClick={() => { this.unlikepost() }} >
+                    <div style={{padding:"10px"}}><b>{this.state.count}</b><br/> <Fab size="small" aria-label="like" style={{ color: "red" }} onClick={() => { this.unlikepost() }} >
                         <FavoriteIcon />
                     </Fab> </div> :
-                    <div><b> {this.state.count}</b><br/><Fab aria-label="like" onClick={() => { this.likepost() }}>
+                    <div style={{padding:"10px 5px"}}><b> {this.state.count}</b><br/><Fab size="small" aria-label="like" onClick={() => { this.likepost() }}>
                         <FavoriteIcon />
                     </Fab></div>
                 }

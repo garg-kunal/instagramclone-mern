@@ -82,15 +82,15 @@ class Login extends React.Component {
                 <div className="containgap">
 
                 </div>
-                <div className="container containers">
+                <div className="container containers mx-auto">
                     <div className="row no-gutters">
                         {/* <div className="overlay"></div> */}
-                        <div className="col-md-6">
+                        <div className="col-md-6 col-lg-6">
                             <center><img src={Guests} alt="user" className="img img-fluid" /></center>
                         </div>
-                        <div className="col-md-6 ">
-                            <h1 className="text-center">Member Login</h1><br /><br />
-                            <form className="form-group">
+                        <div className="col-md-6 col-lg-6 ">
+                            <h1 className="text-center">Login</h1><br /><br />
+                            <form className="form-group mx-auto">
                                 <input
                                     className="form-control mx-auto"
                                     type="text"

@@ -15,9 +15,9 @@ class Home extends React.Component {
 
     }
     render() {
-        if (!this.props.authStatus.isAuthenicated){
-            return <Redirect to='/login'/>
-        }
+        // if (!this.props.authStatus.isAuthenicated){
+        //     return <Redirect to='/login'/>
+        // }
         return (
             <div className="container-fluid">
                 <Navbar/>
