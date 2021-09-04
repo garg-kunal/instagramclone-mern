@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
-const port = 5000 || process.env.PORT
+const port =  process.env.PORT || 5000 
 const morgan = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
@@ -34,6 +34,7 @@ app.use('/user', require('./node files/routes/user'));
 app.use('/user', require('./node files/routes/profiles'));
 app.use('/user', require('./node files/routes/post'));
 app.use("/user", require("./node files/routes/request"));
+
 app.listen(port, (req, res) => {
     console.log("server run at: " + port);
 })
