@@ -1,5 +1,5 @@
 # instagramclone-mern
-This is isntagram clone web app that is build using MERN tech and
+This is insta clone web app that is build using MERN tech and
 it has all of features that are currently in instagram 
 ans some features are unique and it contain jwt auth that is 
 used for authentication...
