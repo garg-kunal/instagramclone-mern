@@ -1,4 +1,4 @@
-# instagramclone-mern
+# Instagramclone-Mern
 
 Live at: https://instaclone-123.firebaseapp.com/home
 This is insta clone web app that is build using MERN tech and
