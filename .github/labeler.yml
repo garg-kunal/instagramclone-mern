@@ -1,4 +1,2 @@
-- label: "Ready to Merge"  
-  mergeable: true 
-- label: "Ready for DEV"
-  base-branch: "dev"
+review me:
+- "*"
