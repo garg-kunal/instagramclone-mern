@@ -1,0 +1,11 @@
+- label: "S"
+  size-below: 10
+- label: "M"
+  size-above: 9
+  size-below: 100
+- label: "L"
+  size-above: 100
+- label: "Ready to Merge"  
+  mergeable: true 
+- label: "Ready for DEV"
+  base-branch: "dev"
