@@ -1,48 +1,51 @@
-import React from 'react';
-import { Redirect } from 'react-router-dom';
-import {connect} from 'react-redux';
+import React from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
- class Logout extends React.Component {
+class Logout extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      loggedIn: false,
+    };
+  }
 
-    constructor() {
-        super();
-        this.state = {
-            loggedIn: false
-        }
+  logout() {
+    localStorage.removeItem("loginauth");
+    this.setState({
+      loggedIn: true,
+    });
+    const add = {
+      token: null,
+      isAuthenicated: false,
+      user: {},
+    };
+    this.props.auth(add);
+    this.props.history.push("/login");
+  }
 
-
-    }
-    logout() {
-        localStorage.removeItem("loginauth");
-        this.setState({
-            loggedIn: true
-        })
-        const add={
-            token:null,
-            isAuthenicated:false,
-            user:{}
-        }
-        this.props.auth(add)
-    }
-
-
-
-    render() {
-        if (this.state.loggedIn) {
-            return <Redirect to="/login" />
-        }
-        return (
-            <div>
-                <button className="btn btn1 btn-primary" onClick={() => { this.logout() }}>Logout</button>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <button
+          className="btn btn1 btn-primary"
+          onClick={() => {
+            this.logout();
+          }}
+        >
+          Logout
+        </button>
+      </div>
+    );
+  }
 }
 
-const mapDispatchToProps=(dispatch)=>{
-    return{
-        auth: (add) => { dispatch({ type: 'Login', payload: add }) }
-    }
-}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    auth: (add) => {
+      dispatch({ type: "Login", payload: add });
+    },
+  };
+};
 
-export default connect(null,mapDispatchToProps)(Logout);
+export default connect(null, mapDispatchToProps)(withRouter(Logout));
