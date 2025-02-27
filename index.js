@@ -37,3 +37,5 @@ app.use("/user", require("./src/routes/request"));
 app.listen(port, (req, res) => {
   console.log("server run at: " + port);
 });
+
+module.exports = app;

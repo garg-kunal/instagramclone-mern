@@ -8,7 +8,7 @@ const auth = require("../middleware");
 const Profile = require("../models/profile");
 const Request = require("../models/request");
 
-hashPassword = async (req, res, next) => {
+const hashPassword = async (req, res, next) => {
   try {
     const password = req.body.password;
     const hashPwd = await bcrypt.hash(password, 10);
