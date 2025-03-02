@@ -8,6 +8,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 const path = require("path");
 require("dotenv").config();
+
 app.use("/uploads/biopics", express.static(path.join("uploads", "biopics")));
 app.use("/uploads/posts", express.static(path.join("uploads", "posts")));
 
@@ -30,8 +31,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", require("./src/routes/user"));
-app.use("/user", require("./src/routes/profiles"));
-app.use("/user", require("./src/routes/post"));
+app.use("/profile", require("./src/routes/profiles"));
+app.use("/post", require("./src/routes/post"));
 app.use("/user", require("./src/routes/request"));
 
 app.listen(port, (req, res) => {

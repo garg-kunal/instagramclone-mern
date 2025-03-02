@@ -5,32 +5,39 @@ const auth = require("../middleware");
 const imagemulter = require("../imagemiddle");
 const fs = require("fs");
 
-router.post("/profile", auth, imagemulter, (req, res) => {
-  const image = req.file.filename;
-  console.log(req.body);
+router.post("/create", auth, imagemulter, (req, res) => {
+  const payload = {
+    body: req.body.body,
+    name: req.body.name,
+  };
+  if (req.body.photo) {
+    payload["image"] = req.file.filename;
+  }
+
   userProfile
     .findOneAndUpdate(
-      { _id: req.body.mainId },
-      { $set: { image: image, body: req.body.body } },
+      { _id: req.body.userId },
+      { $set: payload },
       { new: true }
     )
     .then((data) => {
       if (data) {
-        res.json({
-          message: "Bio Updated",
+        return res.json({
+          data,
         });
-      } else {
-        if ("./uploads/biopics/" + req.file.filename) {
-          fs.unlink("./uploads/biopics/" + image, (err) => {
-            console.log(err);
-          });
-        }
-        res.sendStatus(402);
       }
+      if ("./uploads/biopics/" + req.file.filename) {
+        fs.unlink("./uploads/biopics/" + image, (unlinkErr) => {
+          if (unlinkErr) {
+            console.error("Error deleting file:", unlinkErr);
+          }
+        });
+      }
+      res.sendStatus(402);
     });
 });
 
-router.get("/getprofile/:id", auth, (req, res) => {
+router.get("/get/:id", auth, (req, res) => {
   console.log(req.params.id);
   userProfile.findOne({ _id: req.params.id }, (err, data) => {
     if (err) {
@@ -70,4 +77,5 @@ router.get("/getusers", auth, (req, res) => {
     }
   });
 });
+
 module.exports = router;

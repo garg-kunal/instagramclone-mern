@@ -1,25 +1,30 @@
 const jwt = require("jsonwebtoken");
-const SECRETKEY = "Don't Share With Anyone";
+const SECRETKEY = process.env.SECRET_KEY;
 
 const verifyToken = (req, res, next) => {
+  if (req.path === "/register" || req.path === "/login") {
+    return next();
+  }
+
   const bearer = req.headers.authorization;
-  if (!bearer) {
-    return res.sendStatus(403).json({
+  if (!bearer || !bearer.startsWith("Bearer ")) {
+    return res.status(403).json({
       message: "Token Not Found",
+      code: "token_not_found",
     });
   }
-  if(req.path === '/register' || req.path === '/login'){
-    next();
-    return;
+
+  const token = bearer.split(" ")[1];
+  if (!token) {
+    return res.status(403).json({ message: "Invalid Token Format" });
   }
-  
-  const beartoken = bearer.split(" ")[1];
-  jwt.verify(beartoken, SECRETKEY, (err, data) => {
+
+  jwt.verify(token, SECRETKEY, (err, data) => {
     if (err) {
-      res.sendStatus(402).json({
-        message: "Token Expires",
+      return res.status(401).json({
+        message: "Token Expired or Invalid",
+        code: "token_invalid",
       });
-      return;
     }
 
     req.userData = data;
