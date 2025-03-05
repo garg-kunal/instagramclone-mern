@@ -7,7 +7,6 @@ const fs = require("fs");
 
 function extractMetaData(posts, userId) {
   try {
-    console.log(posts);
     return posts.map((post) => {
       const isLikedByUser =
         post.likes.filter((like) => like.likedId.toString() === userId)
@@ -29,14 +28,14 @@ router.post("/create", auth, imagemiddle, (req, res) => {
   try {
     const body = {
       body: req.body.body,
-      photo: image,
       userName: req.body.userName,
       userId: req.body.userId,
       userImage: req.body.userImage,
     };
 
-    if (req.file.photo) {
-      body["photo"] = req.file.filename;
+    if (req.file) {
+      const base64String = req.file.buffer.toString("base64");
+      body["photo"] = "data:image/png;base64," + base64String;
     }
 
     const newPost = new Post(body);
@@ -44,13 +43,13 @@ router.post("/create", auth, imagemiddle, (req, res) => {
     newPost.save((err, data) => {
       if (err) {
         console.error(err);
-        if (req.body.photo) {
-          fs.unlink(`./uploads/posts/${body.image}`, (unlinkErr) => {
-            if (unlinkErr) {
-              console.error("Error deleting file:", unlinkErr);
-            }
-          });
-        }
+        // if (req.body.photo) {
+        //   fs.unlink(`./uploads/posts/${body.image}`, (unlinkErr) => {
+        //     if (unlinkErr) {
+        //       console.error("Error deleting file:", unlinkErr);
+        //     }
+        //   });
+        // }
         return res.status(500).json({ error: "Failed to save post" });
       }
 

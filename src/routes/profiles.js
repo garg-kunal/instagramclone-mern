@@ -10,8 +10,10 @@ router.post("/create", auth, imagemulter, (req, res) => {
     body: req.body.body,
     name: req.body.name,
   };
-  if (req.body.photo) {
-    payload["image"] = req.file.filename;
+
+  if (req.file) {
+    const base64String = req.file.buffer.toString("base64");
+    payload["image"] = "data:image/png;base64," + base64String;
   }
 
   userProfile

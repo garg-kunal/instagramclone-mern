@@ -152,11 +152,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  src={`${
-                    import.meta.env.VITE_APP_BACKEND_URL
-                  }/uploads/biopics/${userState.user?.image}`}
-                >
+                <Avatar src={`${userState.user?.image}`}>
                   {userState?.user?.name?.[0]}
                 </Avatar>
               </IconButton>

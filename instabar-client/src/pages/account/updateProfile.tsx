@@ -76,10 +76,8 @@ export default function UserBio() {
       >
         <img
           src={
-            preview
-              ? `${import.meta.env.VITE_APP_BACKEND_URL}/uploads/biopics/` +
-                preview
-              : "https://nutristyle.com/wp-content/uploads/2020/06/bio-photo-placeholder.png"
+            preview ||
+            "https://nutristyle.com/wp-content/uploads/2020/06/bio-photo-placeholder.png"
           }
           className="img text-center mx-auto"
           height="200"

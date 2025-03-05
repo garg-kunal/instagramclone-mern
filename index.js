@@ -36,7 +36,7 @@ app.use("/post", require("./src/routes/post"));
 app.use("/user", require("./src/routes/request"));
 
 app.listen(port, (req, res) => {
-  console.log("server run at: " + port);
+  console.log(`Server is runniing at: http:'//localhost:${port}`);
 });
 
 module.exports = app;

@@ -59,9 +59,7 @@ const Requests = () => {
                   component="img"
                   height="250"
                   image={
-                    `${import.meta.env.VITE_APP_BACKEND_URL}/uploads/biopics/${
-                      item.image
-                    }` ||
+                    item.image ||
                     "https://nutristyle.com/wp-content/uploads/2020/06/bio-photo-placeholder.png"
                   }
                   alt={item.name}

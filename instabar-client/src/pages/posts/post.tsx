@@ -101,8 +101,8 @@ export default function PostCard(props: PostType) {
               sx={{ bgcolor: red[500] }}
               aria-label="user-name"
               src={
-                `${import.meta.env.VITE_APP_BACKEND_URL}/uploads/biopics/` +
-                props.userImage
+                props.userImage ||
+                "https://nutristyle.com/wp-content/uploads/2020/06/bio-photo-placeholder.png"
               }
             >
               {props?.userName?.[0]}
@@ -124,10 +124,7 @@ export default function PostCard(props: PostType) {
         <CardMedia
           component="img"
           height="194"
-          image={
-            `${import.meta.env.VITE_APP_BACKEND_URL}/uploads/posts/` +
-            props.photo
-          }
+          image={props.photo || "https://placehold.co/600x400"}
           alt="Post Image"
         />
         <CardContent>

@@ -13,10 +13,8 @@ export default function UserProfile() {
           <div className="flex-[0.4] sm:flex-1">
             <img
               src={
-                user?.image
-                  ? `${import.meta.env.VITE_APP_BACKEND_URL}/uploads/biopics/` +
-                    user?.image
-                  : "https://nutristyle.com/wp-content/uploads/2020/06/bio-photo-placeholder.png"
+                user?.image ||
+                "https://nutristyle.com/wp-content/uploads/2020/06/bio-photo-placeholder.png"
               }
               id="userimage"
               alt="User Pic"
